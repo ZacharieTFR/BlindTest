@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/BlindTest/static/css/main.a27a7e4a.chunk.css",
-    "main.js": "/BlindTest/static/js/main.e3da0185.chunk.js",
-    "main.js.map": "/BlindTest/static/js/main.e3da0185.chunk.js.map",
+    "main.js": "/BlindTest/static/js/main.429b192b.chunk.js",
+    "main.js.map": "/BlindTest/static/js/main.429b192b.chunk.js.map",
     "runtime~main.js": "/BlindTest/static/js/runtime~main.99711f75.js",
     "runtime~main.js.map": "/BlindTest/static/js/runtime~main.99711f75.js.map",
     "static/js/2.639e2286.chunk.js": "/BlindTest/static/js/2.639e2286.chunk.js",
     "static/js/2.639e2286.chunk.js.map": "/BlindTest/static/js/2.639e2286.chunk.js.map",
     "index.html": "/BlindTest/index.html",
-    "precache-manifest.4dfc6fb37744a622ffd294173ea8d1a6.js": "/BlindTest/precache-manifest.4dfc6fb37744a622ffd294173ea8d1a6.js",
+    "precache-manifest.e438b9c260be34fa9c09e0127de07ced.js": "/BlindTest/precache-manifest.e438b9c260be34fa9c09e0127de07ced.js",
     "service-worker.js": "/BlindTest/service-worker.js",
     "static/css/main.a27a7e4a.chunk.css.map": "/BlindTest/static/css/main.a27a7e4a.chunk.css.map",
     "static/media/logo.svg": "/BlindTest/static/media/logo.d1343f12.svg"
