@@ -1,33 +1,187 @@
-.App {
-  text-align: center;
+html {
+  height: 100%;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100%;
+}
+body {
+  background-color: #f0f3f7;
+  height: 100%;
+  background: linear-gradient(to top left, #f0f8ff 80%, #ffffff 70.1%);
+}
+
+.home-content {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  height: 80%;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.home-content p {
+  max-width: 34em;
+  margin: 8px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.home-content h1 {
+  font-size: 60px;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.card-deck {
+  margin-bottom: 12px;
+  justify-content: space-around;
+}
+
+.card-deck .card {
+  margin: 0 0 1rem;
+  border: 0;
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+}
+
+.card-footer {
+  background-color: hsl(220, 12%, 95%);
+}
+
+.start-btn {
+  margin-top: 28px;
+}
+
+.theme-picker-container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.guesser-container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.reveal-btn {
+  background-color: #f8f9fa9e;
+}
+
+#frequency-chart {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: -100;
+  opacity: 0.4;
+}
+
+.timer-outline {
+  transform-origin: 50% 50%;
+  transform: rotate(-90deg);
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 30s linear forwards;
+}
+/* Desactive animation on edge because it doesn't support SVGCircleElement.prototype.getTotalLength  */
+@supports (-ms-ime-align: auto) {
+  .timer-outline {
+    animation-name: none;
   }
-  to {
-    transform: rotate(360deg);
+}
+@keyframes dash {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.svg-logo {
+  height: 3em;
+  width: 3em;
+  margin: -0.2em 0;
+  fill: url(#svg-icons-gradient) #447799;
+}
+
+.theme-display {
+  color: #007bff;
+}
+
+.theme-display:hover {
+  cursor: pointer;
+}
+
+.theme-picker-title {
+  margin: 32px 24px;
+}
+
+.picture {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  height: 35vh;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+}
+
+.startBlindTest-btn {
+  font-size: 15em;
+  border-radius: 50%;
+  background-image: linear-gradient(
+    to bottom,
+    hsl(190, 100%, 50%),
+    hsl(210, 100%, 50%)
+  );
+}
+.startBlindTest-btn:hover {
+  cursor: pointer;
+  background-image: linear-gradient(
+    to bottom,
+    hsl(190, 100%, 50%),
+    hsl(230, 100%, 50%)
+  );
+}
+
+.dropdown-menu {
+  box-shadow: 0 4px 6px hsla(0, 0%, 0%, 0.1);
+}
+
+@media (min-width: 300px) {
+  .card-deck .card {
+    -ms-flex: 0 0 48.7%;
+    flex: 0 0 48.7%;
+  }
+  .card-deck {
+    flex-direction: initial;
+    flex-wrap: wrap;
+  }
+  .card-footer {
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: small;
+  }
+}
+
+@media (min-width: 480px) {
+  .card-footer {
+    font-size: medium;
+  }
+}
+
+@media (min-width: 768px) {
+  .card-deck .card {
+    -ms-flex: 0 0 32%;
+    flex: 0 0 32%;
+  }
+}
+
+@media (min-width: 992px) {
+  .card-deck .card {
+    -ms-flex: 0 0 24%;
+    flex: 0 0 24%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .home-content h1 {
+    font-size: 48px;
   }
 }
