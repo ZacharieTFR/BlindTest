@@ -41,16 +41,23 @@ class GuesserDisplay extends Component {
 
   getRandomTrack() {
     let track;
-
-    do {
-      const trackIndex = Math.floor(
+    let trackFound = false;
+    while (!trackFound) {
+      const randomTrackIndex = Math.floor(
         Math.random() * this.state.playlist.data.length
       );
-      track = this.state.playlist.data[trackIndex];
-    } while (
-      this.state.tracksPlayed.includes(track) &&
-      this.state.tracksPlayed.length <= this.state.playlist.data.length
-    );
+      track = this.state.playlist.data[randomTrackIndex];
+      // Deezer API can send tracks without preview => mandatory to be played with audio src
+      if (track.preview && !this.state.tracksPlayed.includes(track)) {
+        trackFound = true;
+      } else if (
+        this.state.tracksPlayed.length >= this.state.playlist.data.length
+      ) {
+        //TO DO: Display screen end of playlist + back btn to theme
+        console.log('end of playlist');
+        trackFound = true;
+      }
+    }
 
     return track;
   }
@@ -129,6 +136,7 @@ class GuesserDisplay extends Component {
         } else {
           tracks = data;
         }
+        tracks.data = tracks.data.filter(track => track.preview);
         this.setState({
           playlist: tracks
         });

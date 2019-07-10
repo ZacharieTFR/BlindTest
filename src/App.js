@@ -34,7 +34,7 @@ function BlindTest() {
   }
 
   return (
-    <Router>
+    <Router basename="/BlindTest">
       <Navbar collapseOnSelect expand="sm">
         <Navbar.Brand className="text-primary">
           <img
