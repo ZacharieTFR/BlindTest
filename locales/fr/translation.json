@@ -25,5 +25,7 @@
   "play": "Lire",
   "pause": "Pause",
   "reveal": "Révéler",
-  "full_track": "Piste complète"
+  "full_track": "Piste complète",
+  "quiz_finished": "Bravo ! Vous avez terminé ce thème ! ",
+  "back_to_theme_selection": "Retour a la sélection du thème"
 }
