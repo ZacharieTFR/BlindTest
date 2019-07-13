@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/BlindTest/static/css/main.a27a7e4a.chunk.css",
-    "main.js": "/BlindTest/static/js/main.49bf0613.chunk.js",
-    "main.js.map": "/BlindTest/static/js/main.49bf0613.chunk.js.map",
+    "main.css": "/BlindTest/static/css/main.1e42c139.chunk.css",
+    "main.js": "/BlindTest/static/js/main.0996c368.chunk.js",
+    "main.js.map": "/BlindTest/static/js/main.0996c368.chunk.js.map",
     "runtime~main.js": "/BlindTest/static/js/runtime~main.99711f75.js",
     "runtime~main.js.map": "/BlindTest/static/js/runtime~main.99711f75.js.map",
-    "static/js/2.639e2286.chunk.js": "/BlindTest/static/js/2.639e2286.chunk.js",
-    "static/js/2.639e2286.chunk.js.map": "/BlindTest/static/js/2.639e2286.chunk.js.map",
+    "static/js/2.8360ad37.chunk.js": "/BlindTest/static/js/2.8360ad37.chunk.js",
+    "static/js/2.8360ad37.chunk.js.map": "/BlindTest/static/js/2.8360ad37.chunk.js.map",
     "index.html": "/BlindTest/index.html",
-    "precache-manifest.5ff7086168c59a6d83cfc826578accc6.js": "/BlindTest/precache-manifest.5ff7086168c59a6d83cfc826578accc6.js",
+    "precache-manifest.29b7245978f5b17c6629e069c99115a1.js": "/BlindTest/precache-manifest.29b7245978f5b17c6629e069c99115a1.js",
     "service-worker.js": "/BlindTest/service-worker.js",
-    "static/css/main.a27a7e4a.chunk.css.map": "/BlindTest/static/css/main.a27a7e4a.chunk.css.map",
+    "static/css/main.1e42c139.chunk.css.map": "/BlindTest/static/css/main.1e42c139.chunk.css.map",
     "static/media/logo.svg": "/BlindTest/static/media/logo.d1343f12.svg"
   }
 }
