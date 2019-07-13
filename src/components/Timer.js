@@ -24,7 +24,10 @@ export default class Timer extends Component {
   componentDidMount() {
     let timerOutline = this.refs.timerOutline;
     // Edge doesn't support getTotalLength
-    if (typeof SVGCircleElement.prototype.getTotalLength === 'function') {
+    if (
+      window.SVGCircleElement &&
+      typeof SVGCircleElement.prototype.getTotalLength === 'function'
+    ) {
       let length = timerOutline.getTotalLength();
       timerOutline.style.strokeDasharray = length + ' ' + length;
       timerOutline.style.strokeDashoffset = length;

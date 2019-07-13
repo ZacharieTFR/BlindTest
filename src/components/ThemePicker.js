@@ -32,7 +32,7 @@ class ThemePicker extends Component {
             >
               <Card.Body className="theme-display text-center">
                 <span
-                  className="playlist-logo"
+                  className="theme-icon"
                   dangerouslySetInnerHTML={{ __html: icon }}
                 />
               </Card.Body>

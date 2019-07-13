@@ -40,6 +40,9 @@ class GuesserDisplay extends Component {
   }
 
   getRandomTrack() {
+    if (!this.state.playlist.data) {
+      return;
+    }
     let track;
     let trackFound = false;
     while (!trackFound) {
@@ -63,6 +66,9 @@ class GuesserDisplay extends Component {
   }
 
   setAudio(track) {
+    if (!track || !track.preview) {
+      return;
+    }
     this.setState({ trackSource: track.preview }, function() {
       this.audio.current.pause();
       this.audio.current.load();

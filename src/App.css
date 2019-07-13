@@ -180,8 +180,13 @@ body {
   }
 }
 
-@media (min-width: 1200px) {
+@media (max-width: 992px) {
   .home-content h1 {
     font-size: 48px;
+  }
+}
+@media (max-width: 480px) {
+  .home-content h1 {
+    font-size: 36px;
   }
 }

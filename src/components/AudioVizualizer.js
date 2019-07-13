@@ -4,7 +4,13 @@ import * as d3 from 'd3';
 export default class AudioVizualizer extends Component {
   drawFrequencyChart() {
     const h = window.innerHeight;
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (!window.AudioContext) {
+      if (!window.webkitAudioContext) {
+        return;
+      }
+      window.AudioContext = window.webkitAudioContext;
+    }
+    const audioCtx = new AudioContext();
     const audioElement = this.props.audio.current;
 
     const audioSrc = audioCtx.createMediaElementSource(audioElement);
