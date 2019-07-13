@@ -49,10 +49,10 @@ function BlindTest() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link as={Link} to="/">
+            <Nav.Link eventKey="1" as={Link} to="/">
               {t('home')}
             </Nav.Link>
-            <Nav.Link as={Link} to="/themes">
+            <Nav.Link eventKey="2" as={Link} to="/themes">
               {t('theme', { count: 12 })}
             </Nav.Link>
           </Nav>

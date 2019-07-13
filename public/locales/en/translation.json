@@ -25,5 +25,7 @@
   "play": "Play",
   "pause": "Pause",
   "reveal": "Reveal",
-  "full_track": "Full Track"
+  "full_track": "Full Track",
+  "quiz_finished": "Congratulations ! You have finished this theme !",
+  "back_to_theme_selection": "Back to theme selection"
 }

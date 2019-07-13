@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
-
+import { number } from 'prop-types';
 export default class Timer extends Component {
+  static propTypes = {
+    timerNumber: number
+  };
+  static defaultProps = {
+    text: '30'
+  };
+
   resetAnimation() {
     const timerOutline = document.getElementsByClassName('timer-outline')[0];
     if (timerOutline) {
@@ -67,7 +74,7 @@ export default class Timer extends Component {
           fontFamily="Helvetica,monospace"
           fontSize="5em"
         >
-          {this.props.text}
+          {this.props.timerNumber}
         </text>
       </svg>
     );

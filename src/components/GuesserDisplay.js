@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { LinkContainer } from 'react-router-bootstrap';
 import { withTranslation } from 'react-i18next';
 import AudioVizualizer from './AudioVizualizer';
 import { withRouter } from 'react-router-dom';
@@ -21,6 +22,7 @@ class GuesserDisplay extends Component {
     super(props);
     this.state = {
       isQuizStarted: false,
+      isQuizFinished: false,
       theme: {},
       playlist: [],
       currentTrack: {},
@@ -31,15 +33,9 @@ class GuesserDisplay extends Component {
       tracksPlayed: []
     };
     this.audio = React.createRef();
-    this.startBlindTest = this.startBlindTest.bind(this);
-    this.getRandomTrack = this.getRandomTrack.bind(this);
-    this.revealTrack = this.revealTrack.bind(this);
-    this.setTimer = this.setTimer.bind(this);
-    this.pauseTrack = this.pauseTrack.bind(this);
-    this.playTrack = this.playTrack.bind(this);
   }
 
-  getRandomTrack() {
+  getRandomTrack = () => {
     if (!this.state.playlist.data) {
       return;
     }
@@ -56,16 +52,15 @@ class GuesserDisplay extends Component {
       } else if (
         this.state.tracksPlayed.length >= this.state.playlist.data.length
       ) {
-        //TO DO: Display screen end of playlist + back btn to theme
-        console.log('end of playlist');
-        trackFound = true;
+        this.setState({ isQuizFinished: true });
+        return;
       }
     }
 
     return track;
-  }
+  };
 
-  setAudio(track) {
+  setAudio = track => {
     if (!track || !track.preview) {
       return;
     }
@@ -85,13 +80,19 @@ class GuesserDisplay extends Component {
       }
       this.setState({ isTrackRevealed: false, isTrackPlaying: true });
     });
-  }
+  };
 
-  startBlindTest() {
+  startBlindTest = () => {
     const timerComponent = this.refs.timer;
-    if (timerComponent) timerComponent.resetAnimation();
+    if (timerComponent) {
+      timerComponent.resetAnimation();
+    }
 
     let track = this.getRandomTrack();
+    if (!track) {
+      return;
+    }
+
     const tracksPlayed = this.state.tracksPlayed;
     tracksPlayed.push(track);
     this.setState({
@@ -100,37 +101,37 @@ class GuesserDisplay extends Component {
       tracksPlayed: tracksPlayed
     });
     this.setAudio(track);
-  }
+  };
 
-  revealTrack() {
+  revealTrack = () => {
     this.setState({ isTrackRevealed: true });
-  }
+  };
 
-  setTimer() {
+  setTimer = () => {
     let currentTime = this.audio.current.currentTime;
     currentTime = Math.ceil(30 - currentTime);
     this.setState({
       trackCurrentTime: currentTime
     });
-  }
+  };
 
-  playTrack() {
+  playTrack = () => {
     if (this.refs.timer) {
       this.refs.timer.playAnimation();
     }
     this.setState({ isTrackPlaying: true });
     this.audio.current.play();
-  }
+  };
 
-  pauseTrack() {
+  pauseTrack = () => {
     if (this.refs.timer) {
       this.refs.timer.pauseAnimation();
     }
     this.setState({ isTrackPlaying: false });
     this.audio.current.pause();
-  }
+  };
 
-  getPlaylist(url) {
+  getPlaylist = url => {
     $.ajax({
       dataType: 'jsonp',
       url: url,
@@ -153,7 +154,7 @@ class GuesserDisplay extends Component {
         }
       }.bind(this)
     });
-  }
+  };
 
   getThemeFromId(themeId) {
     return themes.find(theme => theme.id === themeId);
@@ -191,7 +192,7 @@ class GuesserDisplay extends Component {
           />
         </React.Fragment>
       );
-    } else if (this.state.isTrackRevealed) {
+    } else if (this.state.isTrackRevealed && !this.state.isQuizFinished) {
       rounded_display = (
         <React.Fragment>
           <Image
@@ -220,12 +221,12 @@ class GuesserDisplay extends Component {
           </Button>
         </React.Fragment>
       );
-    } else {
+    } else if (!this.state.isQuizFinished) {
       rounded_display = (
         <Timer
           className="shadow"
           ref="timer"
-          text={this.state.trackCurrentTime}
+          timerNumber={this.state.trackCurrentTime}
         />
       );
     }
@@ -237,6 +238,16 @@ class GuesserDisplay extends Component {
         <h1 className="text-center text-primary mt-4 mb-4">
           {t('theme')}: {t(this.state.theme.id)}
         </h1>
+        {this.state.isQuizFinished && (
+          <React.Fragment>
+            <p>{t('quiz_finished')}</p>
+            <LinkContainer to="/themes">
+              <Button variant="outline-primary">
+                {t('back_to_theme_selection')}
+              </Button>
+            </LinkContainer>
+          </React.Fragment>
+        )}
 
         {rounded_display}
         <Button
@@ -261,7 +272,6 @@ class GuesserDisplay extends Component {
         >
           {this.state.isTrackPlaying ? playButton : pauseButton}
         </div>
-
         <audio
           crossOrigin="anonymous"
           ref={this.audio}
